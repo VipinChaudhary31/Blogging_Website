@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Blogger.com</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://bootstrap.com/snippets/embed/bootstrap-user-profile-social-icons-animation-11258499">
+     {% load static %}
+  <link rel="stylesheet" href="{% static 'css/Homepage.css'%}">
+</head>
+<body>
+<!-- navbar -->
+<div class="navbar" id="nav_view">
+  <span id='navbar-text'>BLOGGER</span>
+<nav class="menu js-menu-items-wrapper">   
+  <ol class="js-menu-items-list">
+    <li class="menu-item js-menu-item is-active" data-morph="M 418.1,159.8 C 460.9,222.9 497,321.5 452.4,383.4 417.2,432.4 371.2,405.6 271.3,420.3 137.2,440 90.45,500.6 42.16,442.8 -9.572,381 86.33,289.1 117.7,215.5 144.3,153.4 145.7,54.21 212.7,36.25 290.3,15.36 373.9,94.6 418.1,159.8 Z"><a href="Login">LOG IN</a></li>
+    <li class="menu-item js-menu-item" data-morph="M 402.7,215.5 C 433.9,280.4 488.1,367.2 447.7,426.8 410.1,482.2 316.7,460.2 249.7,460.6 182.8,461.1 88.08,485.5 51.26,429.5 10.29,367.3 73.19,279.4 106.9,213 141.8,144 176.6,33.65 253.9,33.7 332.2,33.75 368.8,144.9 402.7,215.5 Z"><a href="#About-view">ABOUT US</a></li>
+  </ol>
+  <div class="menu-shape js-shape">
+    <svg id="circle" viewBox="0 0 500 500">
+        <defs>
+          <linearGradient id="main-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="10%" style="stop-color:#6426CB;"/>
+              <stop offset="100%" style="stop-color:#F34EA4;"/>
+          </linearGradient>
+        </defs>
+        <path id="object" class="js-items-shape-path" fill="url(#main-gradient)"
+                d="M 418.1,159.8 C 460.9,222.9 497,321.5 452.4,383.4 417.2,432.4 371.2,405.6 271.3,420.3 137.2,440 90.45,500.6 42.16,442.8 -9.572,381 86.33,289.1 117.7,215.5 144.3,153.4 145.7,54.21 212.7,36.25 290.3,15.36 373.9,94.6 418.1,159.8 Z">
+        </path>
+    </svg>
+  </div>
+</nav>  
+</div>
+
+<main>
+  <!-- Home section -->
+    <section class="site-title" id="main-view">
+      <div class="site-background">
+          <h1>WELCOME TO THE <br>
+          WORLD OF BLOGGING</h1>
+          <!-- button -->
+            <a href="Signup" class="rainbow-button" alt="EXPLORE" alink="white"></a>
+      </div>
+  </section>
+ <!--  <section class="list" id="list_lang">
+    <div class="container">
+      <div class="box">
+        <span></span>
+        <div class="content"><div class="images"><img src="python.jpg"></div><a href="#">Read More</a></div>
+      </div>
+      <div class="box">
+        <span></span>
+        <div class="content"><div class="images"><img src="html2.jpg"></div><a href="#">Read More</a></div>
+      </div>
+      <div class="box">
+        <span></span>
+        <div class="content"><div class="images"><img src="C++.png"></div><a href="#">Read More</a></div>
+      </div>
+      <div class="box">
+        <span></span>
+        <div class="content"><div class="images"><img src="C.png"></div><a href="#">Read More</a></div>
+      </div>
+      <div class="box">
+        <span></span>
+        <div class="content"><div class="images"><img src="java.svg"></div><a href="#">Read More</a></div>
+      </div>
+      <div class="box">
+        <span></span>
+        <div class="content"><div class="images"><img src="MYSQL.png"></div><a href="#">Read More</a></div>
+      </div>
+    </div>
+  </section> -->
+</main>
+
+<!-- <footer id="About-view">
+  <div class="wrapper">
+    <div class="profile">
+        <div class="overlay">
+            <div class="about d-flex flex-column">
+                <h1>Vipin Chaudhary</h1> <h2>Software Developer</h2>
+            </div>
+            <ul class="social-icons">
+                <li><i class="fa fa-facebook"></i></li>
+                <li><i class="fa fa-linkedin"></i></li>
+                <li><i class="fa fa-twitter"></i></li>
+                <li><i class="fa fa-instagram"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</footer> -->
+
+<!-- Java script -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% load static %}
+<script src="{% static 'js/Homepage.js'%}"></script>
+</body>
+</html>
