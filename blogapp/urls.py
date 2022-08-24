@@ -6,5 +6,6 @@ from blogapp.views import*
 urlpatterns = [
     path('',Homepage),
     path('Login',Login),
-    path('Signup',Signup)
+    path('Signup',Signup),
+    
 ]
