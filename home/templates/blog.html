@@ -7,7 +7,7 @@ container{
     position: absolute;
     top: 200px;
 }
-h5{
+h5,small{
     color: #000;
 }
 p{
@@ -22,7 +22,7 @@ p{
         {% for post in posts %}
         <div class="col-lg-4 my-4">
             <div class="card shadow" style="width: 20rem; height: 33rem;">
-                <img src="/media/{{post.image}}" class="card-img-top" alt="..." height="250px">
+                <img src="/media/{{post.image}}" class="card-img-top" alt="..." height="200px">
                 <div class="card-body">
                   <h5 class="card-title">{{post.title}} <br><small>by {{post.author}}</small></h5>
                   <p class="card-text">{{post.content| truncatechars:210}}</p>
