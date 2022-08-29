@@ -1,8 +1,11 @@
-<h1>Post</h1>
+{% extends 'Base.html' %}
 
+{% block content %}
+<h1>Post</h1>
 <ul>
 {% for post in object_list %}
-	<li><a href="{% url 'article-detail' post.pk %}">{{ post.title}}</a> - {{ post.author.first_name}}{{ post.author.last_name}} <br/>
+	<li><a href="{% url 'Article_Detail' post.pk %}">{{ post.title}}</a> - {{ post.author.first_name}}{{ post.author.last_name}} <br/>
 	{{ post.body }}</li>
 {% endfor %}
 </ul>
+{% endblock %}
