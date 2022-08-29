@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://bootstrap.com/snippets/embed/bootstrap-user-profile-social-icons-animation-11258499">
+    <title> Blogger.com </title>
+    <!-- css  -->
+<style>
+ *{
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+body{
+  font-family: "Montserrat", sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  justify-content: right;
+  background-color: #000;
+}
+/* navabar css */
+.navbar{
+  top: 0px;
+  display: inline-block;
+}
+.menu {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+.menu > ol {
+  display: flex;
+}
+.menu > ol > .menu-item {
+  display: inline-block;
+}
+.menu > ol > .menu-item > a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.5vw;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0 10px;
+  display: inline-flex;
+}
+
+.menu .menu-shape {
+  position: absolute;
+  left: 30px;
+  top: -50px;
+  z-index: -1;
+}
+
+.menu .menu-shape svg {
+  display: block;
+  width: 15vh;
+  height: 1vh;
+  min-height: 150px;
+  margin: 0 auto;
+}
+
+#navbar-text{
+  top: 20px;
+  left: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.5vw;
+  font-weight: 700;
+  display: block;
+}
+{% block css %} {% endblock %}--> 
+</style>
+</head>
+
+
+<body>
+
+    {% block content %}
+    {% endblock %}
+    <!-- navbar -->
+<!--<div class="navbar" id="nav_view">
+  <span id='navbar-text'>BLOGGER</span>
+<nav class="menu js-menu-items-wrapper">   
+  <ol class="js-menu-items-list">
+         <li class="menu-item js-menu-item is-active" data-morph="M 418.1,159.8 C 460.9,222.9 497,321.5 452.4,383.4 417.2,432.4 371.2,405.6 271.3,420.3 137.2,440 90.45,500.6 42.16,442.8 -9.572,381 86.33,289.1 117.7,215.5 144.3,153.4 145.7,54.21 212.7,36.25 290.3,15.36 373.9,94.6 418.1,159.8 Z">
+      <a class="nav-link {% block homeactive %} {% endblock homeactive %}" aria-current="page" href="/">HOME</a>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="menu-item js-menu-item is-active" data-morph="M 418.1,159.8 C 460.9,222.9 497,321.5 452.4,383.4 417.2,432.4 371.2,405.6 271.3,420.3 137.2,440 90.45,500.6 42.16,442.8 -9.572,381 86.33,289.1 117.7,215.5 144.3,153.4 145.7,54.21 212.7,36.25 290.3,15.36 373.9,94.6 418.1,159.8 Z">
+            <a class="nav-link {% block add_blogs_active %} {% endblock add_blogs_active %}" href="/add_blogs/">ADD BLOG</a>
+          </li>
+          <li class="menu-item js-menu-item is-active" data-morph="M 418.1,159.8 C 460.9,222.9 497,321.5 452.4,383.4 417.2,432.4 371.2,405.6 271.3,420.3 137.2,440 90.45,500.6 42.16,442.8 -9.572,381 86.33,289.1 117.7,215.5 144.3,153.4 145.7,54.21 212.7,36.25 290.3,15.36 373.9,94.6 418.1,159.8 Z">
+            <a class="nav-link {% block profileactive %} {% endblock profileactive %}" href="/profile/">PROFILE</a>
+          </li>
+          <li class="menu-item js-menu-item is-active" data-morph="M 418.1,159.8 C 460.9,222.9 497,321.5 452.4,383.4 417.2,432.4 371.2,405.6 271.3,420.3 137.2,440 90.45,500.6 42.16,442.8 -9.572,381 86.33,289.1 117.7,215.5 144.3,153.4 145.7,54.21 212.7,36.25 290.3,15.36 373.9,94.6 418.1,159.8 Z">
+            <a class="nav-link" href="/logout/">LOG OUT</a>
+          </li>
+        {% else %}
+          <li class="menu-item js-menu-item is-active" data-morph="M 418.1,159.8 C 460.9,222.9 497,321.5 452.4,383.4 417.2,432.4 371.2,405.6 271.3,420.3 137.2,440 90.45,500.6 42.16,442.8 -9.572,381 86.33,289.1 117.7,215.5 144.3,153.4 145.7,54.21 212.7,36.25 290.3,15.36 373.9,94.6 418.1,159.8 Z">
+            <a class="nav-link {% block registeractive %} {% endblock registeractive %}" href="/register/">SIGN UP</a>
+          </li>
+          <li class="menu-item js-menu-item is-active" data-morph="M 418.1,159.8 C 460.9,222.9 497,321.5 452.4,383.4 417.2,432.4 371.2,405.6 271.3,420.3 137.2,440 90.45,500.6 42.16,442.8 -9.572,381 86.33,289.1 117.7,215.5 144.3,153.4 145.7,54.21 212.7,36.25 290.3,15.36 373.9,94.6 418.1,159.8 Z">
+            <a class="nav-link {% block loginactive %} {% endblock loginactive %}" href="/login/">LOG IN</a>
+          </li>
+        {% endif %}
+          </ol>
+          <div class="menu-shape js-shape">
+            <svg id="circle" viewBox="0 0 500 500">
+                <defs>
+                  <linearGradient id="main-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="10%" style="stop-color:#6426CB;"/>
+                      <stop offset="100%" style="stop-color:#F34EA4;"/>
+                  </linearGradient>
+                </defs>
+                <path id="object" class="js-items-shape-path" fill="url(#main-gradient)"
+                        d="M 418.1,159.8 C 460.9,222.9 497,321.5 452.4,383.4 417.2,432.4 371.2,405.6 271.3,420.3 137.2,440 90.45,500.6 42.16,442.8 -9.572,381 86.33,289.1 117.7,215.5 144.3,153.4 145.7,54.21 212.7,36.25 290.3,15.36 373.9,94.6 418.1,159.8 Z">
+                </path>
+            </svg>
+          </div>
+        </nav>  
+        </div>-->
+
+
+    <!-- java script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% block js %}
+    {% endblock %}
+  </body>
+</html>
