@@ -8,7 +8,7 @@
 <small>Published By: {{ post.author.first_name}} {{post.author.last_name}} <br> <a href="{% url 'Update_Post' post.pk %}">(Edit)</a><br></small><a href="{% url 'Delete_Post' post.pk %}">(Delete)</a></small>
 <hr>
 <br>
-{{ post.body }}
+{{ post.body|safe }}
 
 <br>
 <a href="{% url 'Home' %}" class="btn btn-secondary">Back</a>

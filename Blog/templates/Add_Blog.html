@@ -1,15 +1,19 @@
 {% extends 'Base.html' %}
+{% block title %} Create A New Blog Post {% endblock%}
 
 {% block content %}
-
-<h1> Add Post.....</h1>
-<div class="'form-group">
-	<form method="POST">
-	{% csrf_token %}
-	{{ form.as_p}}
-	<button class="btn btn-dark">Post</button>
-</div>
-
+ 
+{% if user.is_authenticated %} 
+	<h1> Add Post.....</h1><br>
+	<div class="form-group">
+		<form method="POST">
+		{% csrf_token %}
+		{{ form.as_p}}
+		<button class="btn btn-dark">Post</button>
+	</div>
+{% else %}
+	You are not allow to add blog
+{% endif %}	
 
 
 

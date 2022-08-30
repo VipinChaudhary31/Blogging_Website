@@ -3,12 +3,20 @@
 {% block content %}
 
 <h1> Update Post.....</h1>
-<div class="'form-group">
-	<form method="POST">
-	{% csrf_token %}
-	{{ form.as_p}}
-	<button class="btn btn-dark">Post</button>
-</div>
 
+   {% if user.is_authenticated %}
+		<div class="'form-group">
+			<form method="POST">
+			{% csrf_token %}
+			{{ form.as_p}}
+			<button class="btn btn-dark">Post</button>
+		</div>
+	{% else %}
+	 You are not allow to update
+
+    {% endif %}
+
+<a href="{% url 'Home' %}" class="btn btn-secondary">Back</a>
+    
 
 {% endblock %}

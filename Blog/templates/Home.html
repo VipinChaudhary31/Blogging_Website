@@ -5,7 +5,8 @@
 <ul>
 {% for post in object_list %}
 	<li><a href="{% url 'Article_Detail' post.pk %}">{{ post.title}}</a> - {{ post.author.first_name}}{{ post.author.last_name}} <br/>
-	{{ post.body }}</li>
+	{{ post.body|slice:"200"|safe }}</li>
+
 {% endfor %}
 </ul>
 {% endblock %}
