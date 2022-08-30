@@ -1,0 +1,18 @@
+{% extends 'Base.html' %}
+
+{% block content %}
+
+{% if category_posts %}
+	<h1>{{ cats }}</h1>
+	<br>
+	<ul>
+		{% for post in category_posts %}
+			<li><a href="{% url 'Article_Detail' post.pk %}">{{ post.title}}</a> 
+				- {{ post.author.first_name}}{{ post.author.last_name}} <br/>
+			{{ post.body|slice:"200"|safe }}</li>
+		{% endfor %}
+	</ul>
+{% else %}
+ 	<h2> Sorry there are no blogs related to this category please make your own blogs realted to this category</h2>
+{% endif %}
+{% endblock %}
