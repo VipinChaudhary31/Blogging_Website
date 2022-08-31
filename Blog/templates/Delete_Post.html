@@ -6,12 +6,16 @@
 <br>
 <h3>Delete: {{ post.title }}</h3>
    {% if user.is_authenticated %}
-		<div class="'form-group">
-			<form method="POST">
-			{% csrf_token %}
-			<Strong>Are you sure you want to delete the post?</Strong><br>
-			<button class="btn btn-dark">Delete Post</button>
-		</div>
+   	{% if user.id == post.author.id %}
+			<div class="'form-group">
+				<form method="POST">
+				{% csrf_token %}
+				<Strong>Are you sure you want to delete the post?</Strong><br>
+				<button class="btn btn-dark">Delete Post</button>
+			</div>
+		{% else %}
+			You are not allow to delete	
+			{% endif %}
 	{% else %}
 	 You are not allow to delete	
     {% endif %}

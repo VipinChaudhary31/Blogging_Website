@@ -1,38 +1,27 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
-from email import message
-import email
-import smtplib
 
-def Mailblog(request):
-	model = Post.objects.all()
-	SERVER = "SMTP-mail.outlook.com"
-	FROM = "lucifergod648@hotmail.com"
-	TO = ["vipinchaudhary31122002@hotmail.com"] # must be a list
-	SUBJECT = model[0]
-	TEXT = "hello vipin its is nice ot meet you!"
-	# Prepare actual message
-	message = """From: %s\r\nTo: %s\r\nSubject: %s\r\n\
-
-	%s
-	""" % (FROM, ", ".join(TO), SUBJECT, TEXT)
-
-	# Send the mail
-	import smtplib
-	server = smtplib.SMTP(SERVER)
-	server.starttls()
-	server.login("lucifergod648@hotmail.com", "KINGOFHELL$")
-	server.sendmail(FROM, TO, message)
-	server.quit()
-	return HttpResponse("message send!")
 
 class HomeView(ListView):
 	model = Post
 	template_name = 'Home.html'
 	ordering = ['-post_date']
+
+	def get_context_date(self, *args, **kwargs):
+		cat_menu=Category.objects.all()
+		context=super(HomeView, self).get_context_data(*args, **kwargs)
+		context["cat_menu"]=cat_menu
+		return context	
+
+
+def CategoryListView(request):
+	cat_menu_list=Category.objects.all()
+	return render(request, 'category_list.html',{'cat_menu_list':cat_menu_list} )
+
+
 
 def CategoryView(request, cats):
 	category_posts = Post.objects.filter(category=cats.replace('-', ' '))
@@ -41,7 +30,14 @@ def CategoryView(request, cats):
 class ArticleDetailView(DetailView):
 	model = Post
 	template_name = 'Article_Details.html'
+    
+	def get_context_date(self, *args, **kwargs):
+		cat_menu=Category.objects.all()
+		context=super(ArticleDetailView, self).get_context_data(*args, **kwargs)
+		context["cat_menu"]=cat_menu
+		return context	
 
+		
 class AddPostView(CreateView):
 	model = Post
 	form_class = PostForm

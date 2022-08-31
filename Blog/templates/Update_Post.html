@@ -5,12 +5,16 @@
 <h1> Update Post.....</h1>
 
    {% if user.is_authenticated %}
-		<div class="'form-group">
-			<form method="POST">
-			{% csrf_token %}
-			{{ form.as_p}}
-			<button class="btn btn-dark">Post</button>
-		</div>
+   	{% if user.id == post.author.id %}
+			<div class="'form-group">
+				<form method="POST">
+				{% csrf_token %}
+				{{ form.as_p}}
+				<button class="btn btn-dark">Update Post</button>
+			</div>
+		{% else %}
+			You are not allow to update	
+		  {% endif %}	
 	{% else %}
 	 You are not allow to update
 
