@@ -1,31 +1,56 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.utils import timezone
 from django.urls import reverse
-from datetime import datetime, date
-from ckeditor.fields import RichTextField
-
-class Category(models.Model):
-	name = models.CharField(max_length=225)
-
-	def __str__(self):
-		return self.name
-
-	def get_absolute_url(self):
-		return reverse('Home')
+from django.conf import settings
 
 
-# Create your models here.
+class PostManager(models.Manager):
+    def like_toggle(self, user, post_obj):
+        if user in post_obj.liked.all():
+            is_liked = False
+            post_obj.liked.remove(user)
+        else:
+            is_liked = True
+            post_obj.liked.add(user)
+        return is_liked
+
+
 class Post(models.Model):
-	title= models.CharField(max_length=256)
-	title_tag= models.CharField(max_length=256)
-	author=models.ForeignKey(User, on_delete=models.CASCADE)
-	body=RichTextField(blank=True , null=True)
-	#body=models.TextField()
-	post_date = models.DateField(auto_now_add=True)
-	category = models.CharField(max_length=225, default='coding')
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    liked = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, blank=True, related_name='liked')
+    date_posted = models.DateTimeField(default=timezone.now)
 
-	def __str__(self):
-		return self.title + '|' + str(self.author)
+    objects = PostManager()
 
-	def get_absolute_url(self):
-		return reverse('Home')
+    class Meta:
+        ordering = ('-date_posted', )
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('post_detail', kwargs={'pk': self.pk})
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Post, related_name='comments', on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=True)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def get_absolute_url(self):
+        return reverse("post_list")
+
+    def __str__(self):
+        return self.author

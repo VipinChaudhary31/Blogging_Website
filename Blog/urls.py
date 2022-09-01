@@ -1,16 +1,23 @@
 from django.urls import path
-# from . import views
-from .views import HomeView, ArticleDetailView, AddPostView, UpdatePostView, DeletePostView, AddCategoryView, CategoryView,CategoryListView
+from . import views
+from .views import (
+    PostListView,
+    PostDetailView,
+    PostCreateView,
+    PostUpdateView,
+    PostDeleteView,
+    UserPostListView,
+    add_comment
+)
+
 
 urlpatterns = [
-    # path('', views.Home,name="Home"),
-    path('', HomeView.as_view(), name='Home'),
-    path('Article/<int:pk>', ArticleDetailView.as_view(), name='Article_Detail'),
-    path('Add_Blog/', AddPostView.as_view(), name='Add_Blog'),
-    path('Add_category/', AddCategoryView.as_view(), name='Add_category'),
-    path('Article/Edit/<int:pk>', UpdatePostView.as_view(), name='Update_Post'),
-    path('Article/<int:pk>/remove', DeletePostView.as_view(), name='Delete_Post'),
-    path('category/<str:cats>', CategoryView, name='category'),
-    path('category-list/', CategoryListView, name='category-list'),
-
+    path('', PostListView.as_view(), name='index'),
+    path('user/<str:username>/', UserPostListView.as_view(), name='user_posts'),
+    path('post/<int:pk>/', PostDetailView.as_view(), name='post_detail'),
+    path('post/new/', PostCreateView.as_view(), name='post_create'),
+    path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post_update'),
+    path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post_delete'),
+    path('about/', views.about, name='about'),
+    path('post/<int:pk>/comment/', add_comment, name='add_comment'),
 ]
